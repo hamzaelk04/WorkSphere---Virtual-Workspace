@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.mainSection {
+    background-image: url('plan.jpg');
+    height: 75vh;
+    background-size: 100% 100%;
+}
+
+.room {
+    display: grid;
+    grid-template-columns: repeat(100, 1%);
+    grid-template-rows: repeat(100, 1%);
+    padding: 0;
+}
+
+.meetingRoom {
+    background: rgba(255, 255, 255, 0.473);
+    grid-column: 1 / span 37;
+    grid-row: 2 / span 32;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+}
+
+.serversRoom {
+    background: rgba(255, 0, 0, 0.363);
+    grid-column: 56 / span 22;
+    grid-row: 2 / span 33;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+}
+
+.securityRoom {
+    background: rgba(43, 255, 0, 0.363);
+    grid-column: 79 / span 22;
+    grid-row: 2 / span 33;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+}
+
+.recerption {
+    background: rgba(0, 4, 255, 0.363);
+    grid-column: 1 / span 37;
+    grid-row: 36 / span 63;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+}
+
+.staffRoom {
+    background: rgba(0, 187, 255, 0.363);
+    grid-column: 57 / span 21;
+    grid-row: 68 / span 32;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+}
+
+.vaultRoom {
+    background: rgba(170, 0, 255, 0.363);
+    grid-column: 79 / span 22;
+    grid-row: 68 / span 31;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+}
