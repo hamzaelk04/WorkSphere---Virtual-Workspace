@@ -4,8 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <title>WorkSphere</title>
 </head>
@@ -56,46 +59,234 @@
     </header> -->
 
     <main class="row mx-2">
-        <section class="side-bar col-2 bg-white">
+        <section class="side-bar col-3 bg-white">
+            <div class="title">
+                Staff Membres
+            </div>
+            <div class="addWorker">
+                <button type="button" class="btn btn-success w-100" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">Add new worker</button>
+            </div>
             <div class="search mt-3">
                 <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-dark" type="submit">Search</button>
                 </form>
             </div>
+
+            <!-- Cards -->
+            <div class="cardsParent">
+                <div class="card">
+                    <div class="imgUser">
+                        <img src="userIcon/maleUser.png" class="imgUser" alt="">
+                    </div>
+                    <div class="infoUserInCard">
+                        <p class="nameUser" style="font-weight: bold;">Hamza El Kabraoui</p>
+                        <p class="roleUserInCard">Technicien IT</p>
+                    </div>
+                    <div class="editButton">
+                        <button class="edit btn btn-warning">
+                            Edit
+                        </button>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <!-- space -->
-        <div class="col-1"></div>
 
         <section class="mainSection vh-100 col-9 row">
             <div class="room">
-                <div class="meetingRoom">
-                    meetingRoom
+                <div class="oneRoom meetingRoom">
+                    <div class="cardInsideRoom">
+                        <img class="imgInsideRoom" src="userIcon/maleUser.png" alt="">
+                        <p class="nameInsideRoom">ElKabraoui</p>
+                    </div>
+                    <div class="cardInsideRoom">
+                        <img class="imgInsideRoom" src="userIcon/maleUser.png" alt="">
+                        <p class="nameInsideRoom">ElKabraoui</p>
+                    </div>
+                    <div class="cardInsideRoom">
+                        <img class="imgInsideRoom" src="userIcon/maleUser.png" alt="">
+                        <p class="nameInsideRoom">ElKabraoui</p>
+                    </div>
+                    <div class="cardInsideRoom">
+                        <img class="imgInsideRoom" src="userIcon/maleUser.png" alt="">
+                        <p class="nameInsideRoom">ElKabraoui</p>
+                    </div>
+                    <div class="cardInsideRoom">
+                        <img class="imgInsideRoom" src="userIcon/maleUser.png" alt="">
+                        <p class="nameInsideRoom">ElKabraoui</p>
+                    </div>
+                    <div class="cardInsideRoom">
+                        <img class="imgInsideRoom" src="userIcon/maleUser.png" alt="">
+                        <p class="nameInsideRoom">ElKabraoui</p>
+                    </div>
+
+                    <button class="addWorkerToRoom btn btn-info">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
                 </div>
 
-                <div class="serversRoom">
-                    serversRoom
+                <div class="oneRoom serversRoom">
+                    <div class="cardInsideRoom">
+                        <img class="imgInsideRoom" src="userIcon/maleUser.png" alt="">
+                        <p class="nameInsideRoom">ElKabraoui</p>
+                    </div>
+                    <div class="cardInsideRoom">
+                        <img class="imgInsideRoom" src="userIcon/maleUser.png" alt="">
+                        <p class="nameInsideRoom">ElKabraoui</p>
+                    </div>
+                    <div class="cardInsideRoom">
+                        <img class="imgInsideRoom" src="userIcon/maleUser.png" alt="">
+                        <p class="nameInsideRoom">ElKabraoui</p>
+                    </div>
+                    <div class="cardInsideRoom">
+                        <img class="imgInsideRoom" src="userIcon/maleUser.png" alt="">
+                        <p class="nameInsideRoom">ElKabraoui</p>
+                    </div>
+
+                    <button class="addWorkerToRoom btn btn-info">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
                 </div>
 
-                <div class="securityRoom">
-                    securityRoom
+                <div class="oneRoom securityRoom">
+                    <div class="cardInsideRoom">
+                        <img class="imgInsideRoom" src="userIcon/maleUser.png" alt="">
+                        <p class="nameInsideRoom">ElKabraoui</p>
+                    </div>
+                    <div class="cardInsideRoom">
+                        <img class="imgInsideRoom" src="userIcon/maleUser.png" alt="">
+                        <p class="nameInsideRoom">ElKabraoui</p>
+                    </div>
+
+
+                    <button class="addWorkerToRoom btn btn-info">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
                 </div>
 
-                <div class="recerption">
-                    recerption
+                <div class="oneRoom recerption">
+                    <div class="cardInsideRoom">
+                        <img class="imgInsideRoom" src="userIcon/maleUser.png" alt="">
+                        <p class="nameInsideRoom">ElKabraoui</p>
+                    </div>
+                    <div class="cardInsideRoom">
+                        <img class="imgInsideRoom" src="userIcon/maleUser.png" alt="">
+                        <p class="nameInsideRoom">ElKabraoui</p>
+                    </div>
+                    <div class="cardInsideRoom">
+                        <img class="imgInsideRoom" src="userIcon/maleUser.png" alt="">
+                        <p class="nameInsideRoom">ElKabraoui</p>
+                    </div>
+
+
+                    <button class="addWorkerToRoom btn btn-info">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
                 </div>
 
-                <div class="staffRoom">
-                    staffRoom
+                <div class="oneRoom staffRoom">
+                    <div class="cardInsideRoom">
+                        <img class="imgInsideRoom" src="userIcon/maleUser.png" alt="">
+                        <p class="nameInsideRoom">ElKabraoui</p>
+                    </div>
+                    <div class="cardInsideRoom">
+                        <img class="imgInsideRoom" src="userIcon/maleUser.png" alt="">
+                        <p class="nameInsideRoom">ElKabraoui</p>
+                    </div>
+                    <div class="cardInsideRoom">
+                        <img class="imgInsideRoom" src="userIcon/maleUser.png" alt="">
+                        <p class="nameInsideRoom">ElKabraoui</p>
+                    </div>
+
+
+                    <button class="addWorkerToRoom btn btn-info">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
                 </div>
 
-                <div class="vaultRoom">
-                    vaultRoom
+                <div class="oneRoom vaultRoom">
+                    <div class="cardInsideRoom">
+                        <img class="imgInsideRoom" src="userIcon/maleUser.png" alt="">
+                        <p class="nameInsideRoom">ElKabraoui</p>
+                    </div>
+                    <div class="cardInsideRoom">
+                        <img class="imgInsideRoom" src="userIcon/maleUser.png" alt="">
+                        <p class="nameInsideRoom">ElKabraoui</p>
+                    </div>
+                    <div class="cardInsideRoom">
+                        <img class="imgInsideRoom" src="userIcon/maleUser.png" alt="">
+                        <p class="nameInsideRoom">ElKabraoui</p>
+                    </div>
+                    <div class="cardInsideRoom">
+                        <img class="imgInsideRoom" src="userIcon/maleUser.png" alt="">
+                        <p class="nameInsideRoom">ElKabraoui</p>
+                    </div>
+
+                    <button class="addWorkerToRoom btn btn-info">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
                 </div>
             </div>
         </section>
     </main>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add new worker</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form name="addAworker">
+                        <div class="mb-3">
+                            <label class="form-label">Name: </label>
+                            <input type="text" class="form-control" name="firstName" id="firstName"
+                                placeholder="Enter the worker name">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Photo: </label>
+                            <input type="text" class="form-control" name="photo" id="photo" placeholder="Enter the photo URL">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Phone number: </label>
+                            <input type="text" class="form-control" name="phoneNumber" id="phonenumber"
+                                placeholder="Enter the worker phonenumber">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email: </label>
+                            <input type="email" class="form-control" name id="email" placeholder="Enter the worker email">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Role: </label>
+                            <select class="form-select" name="role" aria-label="Default select example">
+                                <option selected>Select the Role</option>
+                                <option value="Réceptionniste">Réceptionniste</option>
+                                <option value="Technicien IT">Technicien IT</option>
+                                <option value="Agents de sécurité">Agents de sécurité</option>
+                                <option value="Manager">Manager</option>
+                                <option value="Netooyage">Netooyage</option>
+                                <option value="Autres">Autres</option>
+
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Professional experiences: </label>
+                            <input type="text" class="form-control" name="experience" id="experience"
+                                placeholder="Enter the previous experiences">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button id="addNewWorker" type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
