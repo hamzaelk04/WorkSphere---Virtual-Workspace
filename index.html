@@ -75,22 +75,7 @@
             </div>
 
             <!-- Cards -->
-            <div class="cardsParent">
-                <div class="card">
-                    <div class="imgUser">
-                        <img src="userIcon/maleUser.png" class="imgUser" alt="">
-                    </div>
-                    <div class="infoUserInCard">
-                        <p class="nameUser" style="font-weight: bold;">Hamza El Kabraoui</p>
-                        <p class="roleUserInCard">Technicien IT</p>
-                    </div>
-                    <div class="editButton">
-                        <button class="edit btn btn-warning">
-                            Edit
-                        </button>
-                    </div>
-                </div>
-            </div>
+            <div id="cardsParent"></div>
         </section>
 
 
@@ -249,7 +234,8 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Photo: </label>
-                            <input type="text" class="form-control" name="photo" id="photo" placeholder="Enter the photo URL">
+                            <input type="text" class="form-control" name="photo" id="photo"
+                                placeholder="Enter the photo URL">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Phone number: </label>
@@ -258,7 +244,8 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Email: </label>
-                            <input type="email" class="form-control" name id="email" placeholder="Enter the worker email">
+                            <input type="email" class="form-control" name id="email"
+                                placeholder="Enter the worker email">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Role: </label>
@@ -275,8 +262,10 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Professional experiences: </label>
-                            <input type="text" class="form-control" name="experience" id="experience"
-                                placeholder="Enter the previous experiences">
+                            <button id="addExperiences" type="button" class="btn btn-success">Add experience</button>
+                            <div id="newExperience" class="newExperience">
+                                <!-- dynamic Input  -->
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
