@@ -6,23 +6,27 @@ function addNewWorker() {
     let card = document.getElementById('cardsParent')
 
     card.innerHTML = ""
-    // workerListe.forEach(element => {
-    //     card.innerHTML += `
-    //             <div class="card">
-    //                 <div class="imgUser">
-    //                     <img src="userIcon/${element.photo}.png" class="imgUser" alt="">
-    //                 </div>
-    //                 <div class="infoUserInCard">
-    //                     <p class="nameUser" style="font-weight: bold;">${element.name}</p>
-    //                     <p class="roleUserInCard">${element.role}</p>
-    //                 </div>
-    //                 <div class="editButton">
-    //                     <button class="edit btn btn-warning">
-    //                         Edit
-    //                     </button>
-    //                 </div>
-    //             </div>`
-    // });
+    workerListe.forEach(element => {
+        
+        
+        card.innerHTML += `
+                <div class="card">
+                    <div class="imgUser">
+                        <img src="userIcon/${element.photo.split("\\", -1)[2]}" class="imgUser" alt="">
+                    </div>
+                    <div class="infoUserInCard">
+                        <p class="nameUser" style="font-weight: bold;">${element.name}</p>
+                        <p class="roleUserInCard">${element.role}</p>
+                    </div>
+                    <div class="editButton">
+                        <button class="edit btn btn-warning">
+                            Edit
+                        </button>
+                    </div>
+                </div>`
+    });
+
+
 }
 
 function formdata(form) {
@@ -38,7 +42,7 @@ function formdata(form) {
 
         saveInLocalStorage("worker", worker)
 
-        
+
     })
 }
 
@@ -72,22 +76,23 @@ function dynamicInput() {
 
 function addExperience() {
     let divParent = document.getElementById('newExperience')
+    let compteur = 0
 
     divParent.innerHTML += `
                         <div class="eachExperience">
-                           <input type="text" class="form-control experiencePost" name="experience"
+                           <input type="text" class="form-control experiencePost" name="experiencesPost${compteur}"
                                placeholder="Post">
-                           <input type="text" class="form-control experienceCompany" name="experience"
+                           <input type="text" class="form-control experienceCompany" name="experiencesCompany${compteur}"
                                placeholder="Company">
                            <button type="button" class="btn btn-danger removeExperience"><i class="fa-solid fa-minus"></i></button>
                        </div>`
+
+    compteur++
 }
-
-
 
 function modal() {
     const modal = document.getElementById('exampleModal')
-    modal.addEventListener('shown.bs.modal', function() {
+    modal.addEventListener('shown.bs.modal', function () {
         dynamicInput()
     })
 
@@ -97,12 +102,21 @@ function modal() {
 function removeExperience() {
     const remove = document.getElementById('newExperience')
     remove.addEventListener('click', function (e) {
-    if (e.target.closest('.removeExperience')) {
-        e.target.closest('.eachExperience').remove();
-    }
-});
+        if (e.target.closest('.removeExperience')) {
+            e.target.closest('.eachExperience').remove();
+        }
+    });
 
 }
 
+function saveDataInput(form) {
+
+    let dataListe = []
+    let data = {}
+
+
+
+
+}
 
 modal()
