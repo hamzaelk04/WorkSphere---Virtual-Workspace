@@ -86,28 +86,8 @@
                         <img class="imgInsideRoom" src="userIcon/maleUser.png" alt="">
                         <p class="nameInsideRoom">ElKabraoui</p>
                     </div>
-                    <div class="cardInsideRoom">
-                        <img class="imgInsideRoom" src="userIcon/maleUser.png" alt="">
-                        <p class="nameInsideRoom">ElKabraoui</p>
-                    </div>
-                    <div class="cardInsideRoom">
-                        <img class="imgInsideRoom" src="userIcon/maleUser.png" alt="">
-                        <p class="nameInsideRoom">ElKabraoui</p>
-                    </div>
-                    <div class="cardInsideRoom">
-                        <img class="imgInsideRoom" src="userIcon/maleUser.png" alt="">
-                        <p class="nameInsideRoom">ElKabraoui</p>
-                    </div>
-                    <div class="cardInsideRoom">
-                        <img class="imgInsideRoom" src="userIcon/maleUser.png" alt="">
-                        <p class="nameInsideRoom">ElKabraoui</p>
-                    </div>
-                    <div class="cardInsideRoom">
-                        <img class="imgInsideRoom" src="userIcon/maleUser.png" alt="">
-                        <p class="nameInsideRoom">ElKabraoui</p>
-                    </div>
 
-                    <button class="addWorkerToRoom btn btn-info">
+                    <button id="conferenceBtn" class="addWorkerToRoom btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal2">
                         <i class="fa-solid fa-plus"></i>
                     </button>
                 </div>
@@ -117,56 +97,22 @@
                         <img class="imgInsideRoom" src="userIcon/maleUser.png" alt="">
                         <p class="nameInsideRoom">ElKabraoui</p>
                     </div>
-                    <div class="cardInsideRoom">
-                        <img class="imgInsideRoom" src="userIcon/maleUser.png" alt="">
-                        <p class="nameInsideRoom">ElKabraoui</p>
-                    </div>
-                    <div class="cardInsideRoom">
-                        <img class="imgInsideRoom" src="userIcon/maleUser.png" alt="">
-                        <p class="nameInsideRoom">ElKabraoui</p>
-                    </div>
-                    <div class="cardInsideRoom">
-                        <img class="imgInsideRoom" src="userIcon/maleUser.png" alt="">
-                        <p class="nameInsideRoom">ElKabraoui</p>
-                    </div>
 
-                    <button class="addWorkerToRoom btn btn-info">
+                    <button id="serverBtn" class="addWorkerToRoom btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal2">
                         <i class="fa-solid fa-plus"></i>
                     </button>
                 </div>
 
                 <div class="oneRoom securityRoom">
-                    <div class="cardInsideRoom">
-                        <img class="imgInsideRoom" src="userIcon/maleUser.png" alt="">
-                        <p class="nameInsideRoom">ElKabraoui</p>
-                    </div>
-                    <div class="cardInsideRoom">
-                        <img class="imgInsideRoom" src="userIcon/maleUser.png" alt="">
-                        <p class="nameInsideRoom">ElKabraoui</p>
-                    </div>
 
-
-                    <button class="addWorkerToRoom btn btn-info">
+                    <button id="securityBtn" class="addWorkerToRoom btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal2">
                         <i class="fa-solid fa-plus"></i>
                     </button>
                 </div>
 
                 <div class="oneRoom recerption">
-                    <div class="cardInsideRoom">
-                        <img class="imgInsideRoom" src="userIcon/maleUser.png" alt="">
-                        <p class="nameInsideRoom">ElKabraoui</p>
-                    </div>
-                    <div class="cardInsideRoom">
-                        <img class="imgInsideRoom" src="userIcon/maleUser.png" alt="">
-                        <p class="nameInsideRoom">ElKabraoui</p>
-                    </div>
-                    <div class="cardInsideRoom">
-                        <img class="imgInsideRoom" src="userIcon/maleUser.png" alt="">
-                        <p class="nameInsideRoom">ElKabraoui</p>
-                    </div>
 
-
-                    <button class="addWorkerToRoom btn btn-info">
+                    <button id="recerptionBtn" class="addWorkerToRoom btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal2">
                         <i class="fa-solid fa-plus"></i>
                     </button>
                 </div>
@@ -186,7 +132,7 @@
                     </div>
 
 
-                    <button class="addWorkerToRoom btn btn-info">
+                    <button id="staffBtn" class="addWorkerToRoom btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal2">
                         <i class="fa-solid fa-plus"></i>
                     </button>
                 </div>
@@ -209,7 +155,7 @@
                         <p class="nameInsideRoom">ElKabraoui</p>
                     </div>
 
-                    <button class="addWorkerToRoom btn btn-info">
+                    <button id="vaultBtn" class="addWorkerToRoom btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal2">
                         <i class="fa-solid fa-plus"></i>
                     </button>
                 </div>
@@ -217,9 +163,9 @@
         </section>
     </main>
 
-    <!-- Modal -->
+    <!-- Modal  form-->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Add new worker</h5>
@@ -255,7 +201,7 @@
                                 <option value="Technicien IT">Technicien IT</option>
                                 <option value="Agents de sécurité">Agents de sécurité</option>
                                 <option value="Manager">Manager</option>
-                                <option value="Netooyage">Netooyage</option>
+                                <option value="Nettoyage">Nettoyage</option>
                                 <option value="Autres">Autres</option>
 
                             </select>
@@ -277,6 +223,25 @@
         </div>
     </div>
 
+    <!-- Modal add worker to some zone -->
+    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="modalWorkers">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
