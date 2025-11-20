@@ -1,3 +1,4 @@
+
 function addNewWorker() {
     const form = document.forms.namedItem('addAworker');
     formdata(form)
@@ -43,7 +44,7 @@ function formdata(form) {
 }
 
 function saveInLocalStorage(key, value) {
-    let data = getDataFromLocalStorage("worker")
+    let data = getDataFromLocalStorage(key)
 
     if (data == null || data == undefined) {
         data = []
@@ -73,16 +74,16 @@ function showNonAssignedWorkersInModal(role, role2, role3, role4, role5) {
     workerListe.forEach(element => {
         if (element.role == role || element.role == role2 || element.role == role3 || element.role == role4 || element.role == role5) {
             card.innerHTML += `
-                <div class="card">
+                <div class="cardOnModal card">
                     <div class="imgUser">
                         <img src="userIcon/${element.photo.split("\\")[2]}" class="imgUser" alt="">
                     </div>
                     <div class="infoUserInCard">
-                        <p class="nameUser" style="font-weight: bold;">${element.name}</p>
-                        <p class="roleUserInCard">${element.role}</p>
+                        <p class="nameUserOnModal nameUser" style="font-weight: bold;">${element.name}</p>
+                        <p class="roleUserInCardOnModal roleUserInCard">${element.role}</p>
                     </div>
-                    <div class="editButton">
-                        <button class="addOnArea btn btn-success">
+                    <div class="addOnAreaButton">
+                        <button data="${element.name}" class="addOnArea btn btn-success">
                             Add
                         </button>
                     </div>
@@ -101,27 +102,27 @@ function showWorkersByRoleInEachArea() {
     const vaultBtn = document.getElementById('vaultBtn')
 
 
-    conferenceBtn.addEventListener('click', function() {
+    conferenceBtn.addEventListener('click', function () {
         showNonAssignedWorkersInModal('Réceptionniste', 'Manager', 'Nettoyage', 'Agents de sécurité', 'Technicien IT')
     })
 
-    serverBtn.addEventListener('click', function() {
+    serverBtn.addEventListener('click', function () {
         showNonAssignedWorkersInModal('Manager', 'Technicien IT', 'Nettoyage')
     })
 
-    securityBtn.addEventListener('click', function() {
+    securityBtn.addEventListener('click', function () {
         showNonAssignedWorkersInModal('Manager', 'Nettoyage', 'Agents de sécurité')
     })
 
-    receptionBtn.addEventListener('click', function() {
+    receptionBtn.addEventListener('click', function () {
         showNonAssignedWorkersInModal('Réceptionniste', 'Manager', 'Nettoyage')
     })
 
-    staffBtn.addEventListener('click', function() {
+    staffBtn.addEventListener('click', function () {
         showNonAssignedWorkersInModal('Réceptionniste', 'Manager', 'Nettoyage', 'Agents de sécurité', 'Technicien IT')
     })
 
-    vaultBtn.addEventListener('click', function() {
+    vaultBtn.addEventListener('click', function () {
         showNonAssignedWorkersInModal('Manager', 'Agents de sécurité', 'Technicien IT')
     })
 }
@@ -132,6 +133,47 @@ showWorkersByRoleInEachArea()
 
 
 
+function conferenceArea() {
+    let workerListe = getDataFromLocalStorage('worker')
+
+    let btn = document.querySelectorAll('.addOnAreaButton')
+
+    btn.forEach(element => {
+        element.addEventListener('click', (e) => {
+            let nameValue = e.target.getAttribute('data')
+
+            workerListe.forEach((worker, index) => {
+                if(worker.name == nameValue) {
+                    // add this element to the local storage with the zone specified only
+                    conferenceRoom(worker)
+                    workerListe.splice(index, 1)
+                }
+                
+            });
+            
+        })
+    });
+}
+
+const modal2 = document.getElementById('exampleModal2')
+modal2.addEventListener('shown.bs.modal', function () {
+    conferenceArea()
+})
+
+function conferenceRoom(worker) {    
+    let conferenceListe = roomLocalStorage('conferenceRoom', worker)
+    console.log(conferenceListe);
+}
+
+function roomLocalStorage(keyRoom, value) {
+    let conferenceListe = JSON.parse(localStorage.getItem(keyRoom)) || []
+    
+    conferenceListe.push(value)
+
+    localStorage.setItem(keyRoom, JSON.stringify(conferenceListe))
+
+    return conferenceListe
+}
 
 
 
