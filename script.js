@@ -71,6 +71,8 @@ function filterWorekrsInEachAreaByRole(role, role2, role3, role4, role5) {
     });
 }
 
+let lastFilter = null
+
 function showWorkersByRoleInEachArea() {
     const conferenceBtn = document.getElementById('conferenceBtn')
     const serverBtn = document.getElementById('serverBtn')
@@ -81,27 +83,33 @@ function showWorkersByRoleInEachArea() {
 
 
     conferenceBtn.addEventListener('click', function () {
-        filterWorekrsInEachAreaByRole('Réceptionniste', 'Manager', 'Nettoyage', 'Agents de sécurité', 'Technicien IT')
+        lastFilter = ['Réceptionniste', 'Manager', 'Nettoyage', 'Agents de sécurité', 'Technicien IT']
+        filterWorekrsInEachAreaByRole(...lastFilter)
     })
 
     serverBtn.addEventListener('click', function () {
-        filterWorekrsInEachAreaByRole('Manager', 'Technicien IT', 'Nettoyage')
+        lastFilter = ['Manager', 'Technicien IT', 'Nettoyage']
+        filterWorekrsInEachAreaByRole(...lastFilter)
     })
 
     securityBtn.addEventListener('click', function () {
-        filterWorekrsInEachAreaByRole('Manager', 'Nettoyage', 'Agents de sécurité')
+        lastFilter = ['Manager', 'Nettoyage', 'Agents de sécurité']
+        filterWorekrsInEachAreaByRole(...lastFilter)
     })
 
     receptionBtn.addEventListener('click', function () {
-        filterWorekrsInEachAreaByRole('Réceptionniste', 'Manager', 'Nettoyage')
+        lastFilter = ['Réceptionniste', 'Manager', 'Nettoyage']
+        filterWorekrsInEachAreaByRole(...lastFilter)
     })
 
     staffBtn.addEventListener('click', function () {
-        filterWorekrsInEachAreaByRole('Réceptionniste', 'Manager', 'Nettoyage', 'Agents de sécurité', 'Technicien IT')
+        lastFilter = ['Réceptionniste', 'Manager', 'Nettoyage', 'Agents de sécurité', 'Technicien IT']
+        filterWorekrsInEachAreaByRole(...lastFilter)
     })
 
     vaultBtn.addEventListener('click', function () {
-        filterWorekrsInEachAreaByRole('Manager', 'Agents de sécurité', 'Technicien IT')
+        lastFilter = ['Manager', 'Agents de sécurité', 'Technicien IT']
+        filterWorekrsInEachAreaByRole(...lastFilter)
     })
 }
 showWorkersByRoleInEachArea()
@@ -119,34 +127,11 @@ function roomClicked() {
 roomClicked()
 
 function keyLocalStorageForEachRoom() {
-    let key = ""
     let rooms = ['conferenceRoom', 'serverRoom', 'securityRoom', 'recerptionRoom', 'staffRoom', 'vaultRoom']
-    switch (selectedRoom) {
-        case 1:
-            key = rooms[0]
-            return key
-        case 2:
-            key = rooms[1]
-            return key;
-        case 3:
-            key = rooms[2]
-            return key;
-        case 4:
-            key = rooms[3]
-            return key;
-        case 5:
-            key = rooms[4]
-            return key;
-        case 6:
-            key = rooms[5]
-            return key;
-        default:
-            break;
-    }
-
+    return rooms[selectedRoom - 1]
 }
 ////////////////////////////////////////////////////////////////////////////////////////////
-function allRooms() {
+function addWorkerToAnotherLocalStorage() {
     let workerListe = getDataFromLocalStorage('worker')
     let btn = document.querySelectorAll('.addOnArea')
 
@@ -165,14 +150,22 @@ function allRooms() {
                 }
             });
         addNewWorker()
-        showWorkersByRoleInEachArea()
+        if (lastFilter) {
+            filterWorekrsInEachAreaByRole(...lastFilter)
+        }
         })
     });
 }
 
+
+
+
+
+
+
 const modal2 = document.getElementById('exampleModal2')
 modal2.addEventListener('shown.bs.modal', function () {
-    allRooms()
+    addWorkerToAnotherLocalStorage()
 })
 
 // functions to save in local storage
