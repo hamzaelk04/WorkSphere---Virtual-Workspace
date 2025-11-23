@@ -1,4 +1,3 @@
-
 function addNewWorker() {
     const form = document.forms.namedItem('addAworker');
     formdata(form)
@@ -7,7 +6,8 @@ function addNewWorker() {
     let card = document.getElementById('cardsParent')
 
     card.innerHTML = ""
-    workerListe.forEach(element => {
+    if (workerListe != null) {
+        workerListe.forEach(element => {
         card.innerHTML += `
                 <div class="card">
                     <div class="imgUser">
@@ -24,7 +24,9 @@ function addNewWorker() {
                     </div>
                 </div>`
     });
+    }
 }
+addNewWorker()
 
 function formdata(form) {
     form.addEventListener('submit', () => {
@@ -38,34 +40,10 @@ function formdata(form) {
         // worker.experience = form.elements["experience"].value
 
         saveInLocalStorage("worker", worker)
-
-
     })
 }
 
-function saveInLocalStorage(key, value) {
-    let data = getDataFromLocalStorage(key)
-
-    if (data == null || data == undefined) {
-        data = []
-    }
-
-    data.push(value)
-
-    localStorage.setItem(key, JSON.stringify(data))
-}
-
-function getDataFromLocalStorage(key) {
-    let data = localStorage.getItem(key)
-
-    return JSON.parse(data)
-}
-
-
-addNewWorker()
-
-
-function showNonAssignedWorkersInModal(role, role2, role3, role4, role5) {
+function filterWorekrsInEachAreaByRole(role, role2, role3, role4, role5) {
     let workerListe = getDataFromLocalStorage('worker')
 
     let card = document.getElementById('modalWorkers')
@@ -103,76 +81,119 @@ function showWorkersByRoleInEachArea() {
 
 
     conferenceBtn.addEventListener('click', function () {
-        showNonAssignedWorkersInModal('Réceptionniste', 'Manager', 'Nettoyage', 'Agents de sécurité', 'Technicien IT')
+        filterWorekrsInEachAreaByRole('Réceptionniste', 'Manager', 'Nettoyage', 'Agents de sécurité', 'Technicien IT')
     })
 
     serverBtn.addEventListener('click', function () {
-        showNonAssignedWorkersInModal('Manager', 'Technicien IT', 'Nettoyage')
+        filterWorekrsInEachAreaByRole('Manager', 'Technicien IT', 'Nettoyage')
     })
 
     securityBtn.addEventListener('click', function () {
-        showNonAssignedWorkersInModal('Manager', 'Nettoyage', 'Agents de sécurité')
+        filterWorekrsInEachAreaByRole('Manager', 'Nettoyage', 'Agents de sécurité')
     })
 
     receptionBtn.addEventListener('click', function () {
-        showNonAssignedWorkersInModal('Réceptionniste', 'Manager', 'Nettoyage')
+        filterWorekrsInEachAreaByRole('Réceptionniste', 'Manager', 'Nettoyage')
     })
 
     staffBtn.addEventListener('click', function () {
-        showNonAssignedWorkersInModal('Réceptionniste', 'Manager', 'Nettoyage', 'Agents de sécurité', 'Technicien IT')
+        filterWorekrsInEachAreaByRole('Réceptionniste', 'Manager', 'Nettoyage', 'Agents de sécurité', 'Technicien IT')
     })
 
     vaultBtn.addEventListener('click', function () {
-        showNonAssignedWorkersInModal('Manager', 'Agents de sécurité', 'Technicien IT')
+        filterWorekrsInEachAreaByRole('Manager', 'Agents de sécurité', 'Technicien IT')
     })
 }
-
 showWorkersByRoleInEachArea()
 
+let selectedRoom = null;
+function roomClicked() {
+    let btnRoom = document.querySelectorAll('.addWorkerToRoom')
+    btnRoom.forEach(element => {
+        element.addEventListener('click', () => {
+            selectedRoom = Number(element.getAttribute('zone'))
+        })
+    });
 
+}
+roomClicked()
 
+function keyLocalStorageForEachRoom() {
+    let key = ""
+    let rooms = ['conferenceRoom', 'serverRoom', 'securityRoom', 'recerptionRoom', 'staffRoom', 'vaultRoom']
+    switch (selectedRoom) {
+        case 1:
+            key = rooms[0]
+            return key
+        case 2:
+            key = rooms[1]
+            return key;
+        case 3:
+            key = rooms[2]
+            return key;
+        case 4:
+            key = rooms[3]
+            return key;
+        case 5:
+            key = rooms[4]
+            return key;
+        case 6:
+            key = rooms[5]
+            return key;
+        default:
+            break;
+    }
 
-
-function conferenceArea() {
+}
+////////////////////////////////////////////////////////////////////////////////////////////
+function allRooms() {
     let workerListe = getDataFromLocalStorage('worker')
-
-    let btn = document.querySelectorAll('.addOnAreaButton')
+    let btn = document.querySelectorAll('.addOnArea')
 
     btn.forEach(element => {
-        element.addEventListener('click', (e) => {
-            let nameValue = e.target.getAttribute('data')
-
-            workerListe.forEach((worker, index) => {
-                if(worker.name == nameValue) {
-                    // add this element to the local storage with the zone specified only
-                    conferenceRoom(worker)
-                    workerListe.splice(index, 1)
-                }
-                
-            });
+        let nameValue = element.getAttribute('data')
+        element.addEventListener('click', () => {
             
+            workerListe.forEach((worker, index) => {
+                if (worker.name == nameValue) {
+                    let value = workerListe.splice(index, 1)[0]
+                    const key = keyLocalStorageForEachRoom();
+                    console.log(workerListe);
+                    
+                    saveInLocalStorage(key, value)
+                    saveTheNewLocalStorageForWorkers('worker', workerListe)
+                }
+            });
+        addNewWorker()
+        showWorkersByRoleInEachArea()
         })
     });
 }
 
 const modal2 = document.getElementById('exampleModal2')
 modal2.addEventListener('shown.bs.modal', function () {
-    conferenceArea()
+    allRooms()
 })
 
-function conferenceRoom(worker) {    
-    let conferenceListe = roomLocalStorage('conferenceRoom', worker)
-    console.log(conferenceListe);
+// functions to save in local storage
+function saveTheNewLocalStorageForWorkers(key, value) {
+    let data = getDataFromLocalStorage(key) || []
+    data = value
+    localStorage.setItem(key, JSON.stringify(data))
 }
 
-function roomLocalStorage(keyRoom, value) {
-    let conferenceListe = JSON.parse(localStorage.getItem(keyRoom)) || []
-    
-    conferenceListe.push(value)
+function saveInLocalStorage(key, value) {
+    let data = getDataFromLocalStorage(key) || []
 
-    localStorage.setItem(keyRoom, JSON.stringify(conferenceListe))
+    data.push(value)
 
-    return conferenceListe
+    localStorage.setItem(key, JSON.stringify(data))
+}
+
+function getDataFromLocalStorage(key) {
+    let data = localStorage.getItem(key)
+
+    return JSON.parse(data)
 }
 
 
@@ -189,6 +210,11 @@ function roomLocalStorage(keyRoom, value) {
 
 
 
+
+
+
+
+// functions for dynamic input
 function dynamicInput() {
     let btn = document.getElementById('addExperiences')
 

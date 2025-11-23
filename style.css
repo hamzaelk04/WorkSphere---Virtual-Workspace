@@ -9,7 +9,13 @@ main {
 }
 
 .side-bar {
-    width: 300px;
+    width: 310px;
+    overflow: scroll;
+    height: 99vh;
+}
+
+#cardsParent {
+    
 }
 
 .title {
@@ -137,8 +143,6 @@ main {
     height: 50px;
     padding: 0 20px;
 }
-
-
 
 .eachExperience {
     display: flex;
