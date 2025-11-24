@@ -82,49 +82,50 @@
         <section class="mainSection vh-100 col-9 row">
             <div class="room">
                 <div id="conferenceRoom" class="oneRoom meetingRoom">
-                    <div class="cardParent">
-                        <div class="cardInsideRoom">
-                        <img class="imgInsideRoom" src="userIcon/maleUser.png" alt="">
-                        <p class="nameInsideRoom">ElKabraoui</p>
-                    </div>
-                    </div>
 
-                    <button id="conferenceBtn" zone="1" class="addWorkerToRoom btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+
+                    <button id="conferenceBtn" zone="1" class="addWorkerToRoom btn btn-info" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal2">
                         Add
                     </button>
                 </div>
 
                 <div id="serverRoom" class="oneRoom serversRoom">
 
-                    <button id="serverBtn" zone="2" class="addWorkerToRoom btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                    <button id="serverBtn" zone="2" class="addWorkerToRoom btn btn-info" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal2">
                         Add
                     </button>
                 </div>
 
                 <div id="securityRoom" class="oneRoom securityRoom">
 
-                    <button id="securityBtn" zone="3" class="addWorkerToRoom btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                    <button id="securityBtn" zone="3" class="addWorkerToRoom btn btn-info" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal2">
                         Add
                     </button>
                 </div>
 
                 <div id="receptionRoom" class="oneRoom recerption">
 
-                    <button id="recerptionBtn" zone="4" class="addWorkerToRoom btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                    <button id="recerptionBtn" zone="4" class="addWorkerToRoom btn btn-info" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal2">
                         Add
                     </button>
                 </div>
 
                 <div id="staffRoom" class="oneRoom staffRoom">
 
-                    <button id="staffBtn" zone="5" class="addWorkerToRoom btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                    <button id="staffBtn" zone="5" class="addWorkerToRoom btn btn-info" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal2">
                         Add
                     </button>
                 </div>
 
                 <div id="vaultRoom" class="oneRoom vaultRoom">
 
-                    <button id="vaultBtn" zone="6" class="addWorkerToRoom btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                    <button id="vaultBtn" zone="6" class="addWorkerToRoom btn btn-info" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal2">
                         Add
                     </button>
                 </div>
@@ -212,10 +213,26 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-    <script src="script.js"></script>
+
+    <!-- Modal show worker details -->
+    <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div id="containerDetails" class="modal-body">
+                    
+                    
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+        <script src="script.js"></script>
 </body>
 
 </html>

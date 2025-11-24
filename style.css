@@ -116,6 +116,9 @@ main {
     justify-self: center;
     align-self: end; 
     position: fixed;  
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .cardInsideRoom {
@@ -149,4 +152,19 @@ main {
     gap: 10px;
     height: 40px;
     margin-top: 10px;
+}
+
+
+.cardInsideRoom:hover {
+    cursor: pointer;
+}
+
+.imgDetails {
+    justify-self: center;
+}
+
+.imgUserDetails {
+    width: 100px;
+    height: 100px;
+
 }

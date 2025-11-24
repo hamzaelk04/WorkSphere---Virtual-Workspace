@@ -8,10 +8,10 @@ function addNewWorker() {
     card.innerHTML = ""
     if (workerListe != null) {
         workerListe.forEach(element => {
-        card.innerHTML += `
+            card.innerHTML += `
                 <div class="card">
                     <div class="imgUser">
-                        <img src="userIcon/${element.photo.split("\\")[2]}" class="imgUser" alt="">
+                        <img src="userIcon/${element.photo.split("\\")[2]}" class="imgUser" alt="${element.name}">
                     </div>
                     <div class="infoUserInCard">
                         <p class="nameUser" style="font-weight: bold;">${element.name}</p>
@@ -23,7 +23,7 @@ function addNewWorker() {
                         </button>
                     </div>
                 </div>`
-    });
+        });
     }
 }
 addNewWorker()
@@ -40,7 +40,10 @@ function formdata(form) {
         // worker.experience = form.elements["experience"].value
 
         saveInLocalStorage("worker", worker)
+        form.reset()
+        addNewWorker()
     })
+
 }
 
 function filterWorekrsInEachAreaByRole(role, role2, role3, role4, role5) {
@@ -138,30 +141,132 @@ function addWorkerToAnotherLocalStorage() {
     btn.forEach(element => {
         let nameValue = element.getAttribute('data')
         element.addEventListener('click', () => {
-            
             workerListe.forEach((worker, index) => {
                 if (worker.name == nameValue) {
                     let value = workerListe.splice(index, 1)[0]
                     const key = keyLocalStorageForEachRoom();
-                    console.log(workerListe);
-                    
+
                     saveInLocalStorage(key, value)
                     saveTheNewLocalStorageForWorkers('worker', workerListe)
+
+                    console.log(workerListe);
+
+                    createCardOnEachArea(key, value)
+
+
                 }
             });
-        addNewWorker()
-        if (lastFilter) {
-            filterWorekrsInEachAreaByRole(...lastFilter)
-        }
+            addNewWorker()
+            if (lastFilter) {
+                filterWorekrsInEachAreaByRole(...lastFilter)
+            }
         })
     });
 }
 
+function createCardOnEachArea(area, value) {
+    let zone = document.getElementById(area)
+
+    zone.innerHTML += `
+                    <div class="cardInsideRoom" data-name = ${value.name} data-bs-toggle="modal"
+                        data-bs-target="#exampleModal3" data = "${value.name}">
+                        <img class="imgInsideRoom" src="userIcon/${value.photo.split("\\")[2]}" alt="">
+                        <p class="nameInsideRoom">${value.name}</p>
+                    </div>                
+    `
+}
+
+function loadCardsIntoRooms() {
+    const rooms = ['conferenceRoom', 'serverRoom', 'securityRoom', 'recerptionRoom', 'staffRoom', 'vaultRoom']
+
+    rooms.forEach(room => {
+        let workers = getDataFromLocalStorage(room) || []
+        let zone = document.getElementById(room)
+        if (!zone) return
+        if (workers){
+            workers.forEach(worker => {
+            zone.innerHTML += `
+                    <div class="cardInsideRoom smallCards" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal3" data-name="${worker.name}">
+                        <img class="imgInsideRoom" src="userIcon/${worker.photo.split("\\")[2]}" alt="${worker.name}"
+                        <p class="nameInsideRoom">${worker.name}</p>
+                    </div>                
+                    `
+        })
+        }
+        
+        // zone.innerHTML = ''
+        
+    })
+
+    
+    
+}
+
+loadCardsIntoRooms()
 
 
+function activateWorkerCards() {
+    let cards = document.querySelectorAll('.smallCards')
 
+    cards.forEach(card => {
+        let name = card.getAttribute('data-name')
+        card.addEventListener('click', () => {
+            let rooms = ["conferenceRoom", "serverRoom", "securityRoom", "receptionRoom", "staffRoom", "vaultRoom"];
+            rooms.forEach(key => {
+                let workers = getDataFromLocalStorage(key) || []
+                let foundName = workers.find(worker => worker.name == name)
+                if (foundName) {
+                    showWorkerDetails(foundName)
+                }
+            })
+        })
+    })
+}
+activateWorkerCards()
 
+function removeWorkerFromRoom() {
+    let btns = document.querySelectorAll('.btnRemove')
 
+    btns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            let name = btn.getAttribute('data-remove')
+            let rooms = ["conferenceRoom", "serverRoom", "securityRoom", "receptionRoom", "staffRoom", "vaultRoom"];
+            rooms.forEach(key => {
+                let workers = getDataFromLocalStorage(key) || []
+                let index = workers.findIndex(worker => worker.name == name)
+                if (index != -1) {
+                    let removeWorker = workers.splice(index, 1)
+                    console.log(workers);
+                    
+                    saveTheNewLocalStorageForWorkers(key, workers)
+                    saveInLocalStorage(key, removeWorker)  
+                }
+            })
+
+        })
+    })
+}
+
+function showWorkerDetails(worker) {
+    document.getElementById('containerDetails').innerHTML = `
+                    <div class="mb-3 imgDetails">
+                        <img src="userIcon/${worker.photo.split("\\")[2]}" class="imgUser imgUserDetails" alt="">
+                    </div>
+                    <div class="mb-3">
+                        <p class="nameDetails">Name: ${worker.name}</p>
+                        <p class="phoneDetails">Phone number: ${worker.phoneNumber}</p>
+                        <p class="emailDetails">Email: ${worker.email}</p>
+                        <p class="roleDetails">Role: ${worker.role}</p>
+                    </div>
+                    <div class="mb-3">
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger btnRemove" data-remove="${worker.name}" data-bs-dismiss="modal">Remove</button>
+                        </div>
+                    </div>
+    `
+    removeWorkerFromRoom();
+}
 
 const modal2 = document.getElementById('exampleModal2')
 modal2.addEventListener('shown.bs.modal', function () {
